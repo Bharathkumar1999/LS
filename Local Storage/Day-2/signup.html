@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+
+    <img src="https://sso.masaischool.com/brand_dark.svg" alt="">
+    <form>
+        
+        <h2>Sign Up</h2>
+        <p><b>Full Name</b></p>
+        <input id="username" placeholder="Enter your full name" type="text">
+        <p><b>Email</b></p>
+        <input id="email" placeholder="email" type="text">
+        <p><b>Password</b></p>
+        <input id="password" placeholder="password" type="password" >
+        <p id="agreement">By Signing up, I accept the Masai School Terms of Service and acknowledge the Privacy Policy</p>
+        <input id="submit" type="submit" value="Sign Up">
+        <p id="signin">Already have an account?<a href="signin.html">Sign In</a></p>
+    </form>
+    
+</body>
+
+<script>
+    var data=JSON.parse(localStorage.getItem("userData")) || [];
+    var form = document.querySelector("form");
+
+    form.addEventListener("submit",function(event){
+        event.preventDefault();
+
+        var data={
+            username:form.username.value,
+            email: form.email.value,
+            password: form.password.value,
+        }
+        data.push(data);
+        console.log(data);
+        localStorage.setItem("userData",JSON.stringify(data));
+
+        window.location.href="signin.html";
+
+        
+
+    })
+
+
+    
+</script>
+</html>
